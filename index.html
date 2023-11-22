@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Chess Game</title>
+</head>
+<body>
+  <div id="chessboard"></div>
+  <script src="script.js"></script>
+</body>
+</html>
+#chessboard {
+  display: grid;
+  grid-template-columns: repeat(8, 50px);
+  grid-template-rows: repeat(8, 50px);
+}
+
+.dark {
+  background-color: #779556;
+}
+
+.light {
+  background-color: #eedc82;
+}
+
+.piece {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+const chessboard = document.getElementById("chessboard");
+
+const pieces = {
+  "rook": "♜",
+  "knight": "♞",
+  "bishop": "♝",
+  "queen": "♛",
+  "king": "♚",
+  "pawn": "♟",
+};
+
+function createChessboard() {
+  for (let row = 0; row < 8; row++) {
+    for (let col = 0; col < 8; col++) {
+      const square = document.createElement("div");
+      square.className = (row + col) % 2 === 0 ? "light" : "dark";
+      square.addEventListener("click", () => handleSquareClick(row, col));
+      chessboard.appendChild(square);
+    }
+  }
+}
+
+function placePieces() {
+  // Add your piece placement logic here
+}
+
+function handleSquareClick(row, col) {
+  // Add your move logic here
+}
+
+createChessboard();
+placePieces();
